@@ -1,0 +1,1 @@
+cat symbols | dmenu -l 15 | awk '{print $1}' | xclip -selection clipboard
