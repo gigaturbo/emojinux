@@ -28,6 +28,12 @@ curl -sL "$URL" |\
   grep -E '^[[:alnum:]]{4,5}\s+; fully-qualified.*$' |\
   perl -pe 's|^[^#].*fully\-qualified.*# ([^ ]+) ([^ ]+) (.*)|\1 \3|g' > cleaned/emoji-list
 
+# https://raw.githubusercontent.com/devicons/devicon/master/devicon-base.css
+# https://raw.githubusercontent.com/AndreLZGava/font-awesome-extension/master/font-awesome-extension.css
+# https://raw.githubusercontent.com/vorillaz/devicons/master/css/devicons.css
+# https://cdn.jsdelivr.net/npm/font-logos@0.18/assets/font-logos.css
+# https://raw.githubusercontent.com/Templarian/MaterialDesign-Webfont/master/css/materialdesignicons.css
+
 # concat
 #cat cleaned/* > symbols
 cat cleaned/* | awk -e '{print NR, $0}' | sort -t ' ' -k 3 -u | sort -g -t ' ' -k 1 | cut -d ' ' --complement -f 1 > symbols

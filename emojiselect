@@ -1,1 +1,8 @@
-cat symbols | dmenu -l 15 | awk '{print $1}' | xclip -selection clipboard
+#!/usr/bin/env bash
+
+symbol=$(cat symbols | dmenu -l 15 | awk '{print $1}')
+[ -z "$symbol" ] && exit
+
+echo "$symbol" | tr -d '\n' | xclip -selection clipboard
+
+notify-send "'$symbol' copied to clipboard." &
